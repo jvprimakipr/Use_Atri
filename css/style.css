@@ -1,0 +1,12 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.without-underline{
+    text-decoration: none;
+}
+
+input{
+    background-color: #E8E8E8;
+    border: none;
+}

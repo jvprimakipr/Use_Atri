@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ATRI - Login</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Almir Fonseca, João Vinicius Primaki">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="./js/script.js"></script>
+</head>
+
+<body>
+    <div id="login_form_box">
+
+        <form method="post" id="login_form">
+            <h1>Faça seu login</h1>
+
+            <label id="user_email_label" for="user_email">Email</label><br>
+            <input id="user_email" type="text" name="user_email" required onchange="checkEmail();"><br>
+
+            <label id="user_password_label" for="user_password">Senha</label><br>
+            <input id="user_password" type="password" name="user_password" required onchange="checkPassword();"><br>
+
+            <a id="forgot_password" class="without-underline" href="#">Esqueceu sua senha?</a><br>
+
+            <input id="send_button" class="send_button" type="submit" value="Entrar"><br><br>
+        </form>
+    </div>
+
+    <div id="sign_up_box">
+        <h3>Não tem conta?</h3>
+        <a href="#" class="send_button without-underline">Criar Conta</a>
+    </div>
+</body>
+
+</html>
