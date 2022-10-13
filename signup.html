@@ -29,21 +29,21 @@
         <form method="post" id="sign_up_form">
             <h1>Crie sua conta</h1>
 
-            <label id="user_email_label" for="user_email">Seu melhor email</label><br>
-            <input id="user_email" type="text" name="user_email" required onchange="checkEmail();"><br>
+            <label id="user_email_label" for="user_email" value="Seu melhor email">Seu melhor email</label><br>
+            <input id="user_email" class="form-input" type="text" name="user_email" placeholder="Ex.: joao@exemplo.com" required onchange="checkEmail();"><br>
 
-            <label id="user_name_label" for="user_name">Nome completo</label><br>
-            <input id="user_name" type="text" name="user_name" required><br>
+            <label id="user_name_label" for="user_name" value="Nome completo">Nome completo</label><br>
+            <input id="user_name" class="form-input" type="text" name="user_name" placeholder="Ex.: João Silva" required><br>
             
             <!-- TODO sugerir usar 2 entradas: Nome e Sobrenome -->
             
-            <label id="user_cpf_label" for="user_cpf">CPF</label><br>
-            <input id="user_cpf" type="text" name="user_cpf" required oninput="cpfMask(this);" onchange="checkCPF();"><br>
+            <label id="user_cpf_label" for="user_cpf" value="CPF">CPF</label><br>
+            <input id="user_cpf" class="form-input" type="text" name="user_cpf" placeholder="Ex.: 111.111.111-11" required oninput="cpfMask(this);" onchange="checkCPF();"><br>
 
-            <label id="user_password_label" for="user_password">Senha</label><br>
-            <input id="user_password" type="password" name="user_password" required onchange="checkPassword();"><br>
+            <label id="user_password_label" for="user_password" value="Senha">Senha</label><br>
+            <input id="user_password" class="form-input" type="password" name="user_password" required onchange="checkPassword();"><br>
 
-            <input id="send_button" class="send_button" type="submit" value="Entrar"><br><br>
+            <input id="send_button" class="send_button" type="submit" value="Criar Conta"><br><br>
         </form>
     </div>
 </body>

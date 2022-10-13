@@ -27,13 +27,13 @@ function validEmail() {
     console.log("Email válido!");
 
     // Altera o conteúdo da label
-    label.innerHTML = "Email";
+    label.innerHTML = label.getAttribute("value");
 
     // Reestiliza a label e a input box
     label.style.color = "#101010";
 
     inputBox.style.backgroundColor = "#E8E8E8";
-    inputBox.style.border = "2px solid #101010";
+    inputBox.style.border = "2px solid #E8E8E8";
 }
 
 function invalidPassword(errorMessage) {
@@ -65,13 +65,51 @@ function validPassword() {
     console.log("Senha válida!");
 
     // Altera o conteúdo da label
-    label.innerHTML = "Senha";
+    label.innerHTML = label.getAttribute("value");
 
     // Reestiliza a label e a input box
     label.style.color = "#101010";
 
     inputBox.style.backgroundColor = "#E8E8E8";
-    inputBox.style.border = "2px solid #101010";
+    inputBox.style.border = "2px solid #E8E8E8";
+}
+
+function invalidCPF(errorMessage){
+    // Acessa os elementos do formulário
+    var label = document.getElementById("user_cpf_label");
+    var inputBox = document.getElementById("user_cpf");
+
+    // Imprime mensagens de erro ao usuário
+    inputBox.setCustomValidity(errorMessage);
+    console.log("CPF inválida: ", errorMessage);
+
+    // Altera o conteúdo da label
+    label.innerHTML = "CPF Inválido";
+
+    // Reestiliza a label e a input box
+    label.style.color = "#F95622";
+
+    inputBox.style.backgroundColor = "#DFB7B7";
+    inputBox.style.border = "2px solid #F95622";
+}
+
+function validCPF(){
+    // Acessa os elementos do formulário
+    var label = document.getElementById("user_cpf_label");
+    var inputBox = document.getElementById("user_cpf");
+
+    // Imprime mensagens de erro ao usuário
+    inputBox.setCustomValidity("");
+    console.log("CPF válido!");
+
+    // Altera o conteúdo da label
+    label.innerHTML = label.getAttribute("value");
+
+    // Reestiliza a label e a input box
+    label.style.color = "#101010";
+
+    inputBox.style.backgroundColor = "#E8E8E8";
+    inputBox.style.border = "2px solid #E8E8E8";
 }
 
 function getValue(input) {
@@ -115,6 +153,10 @@ function validatePassword(input) {
 
 function validateCPF(input) {
     CPFValue = getValue(input);
+
+    if (CPFValue === "") {
+        return "É necessario preencher esse campo"
+    }
 
     var trimmedCPFValue = CPFValue.replace(/\D+/g, '');
 
@@ -171,7 +213,7 @@ function validateCPF(input) {
 
     
     if (trimmedCPFValue.length != 11) {
-        return "O CPF não contém o número correto de caracteres válidos"
+        return "O CPF informado não é válido"
     } else {
         return "OK"
     }
@@ -205,13 +247,10 @@ function checkCPF() {
 
     CPFValid = validateCPF(inputBox);
 
-    // DEBUG
-    console.log(CPFValid);
-
     if (CPFValid === "OK") {
-        // validCPF();
+        validCPF();
     } else {
-        // invalidCPF(CPFValid);
+        invalidCPF(CPFValid);
     }
 }
 
