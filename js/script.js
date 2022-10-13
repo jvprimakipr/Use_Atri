@@ -113,6 +113,71 @@ function validatePassword(input) {
     }
 }
 
+function validateCPF(input) {
+    CPFValue = getValue(input);
+
+    var trimmedCPFValue = CPFValue.replace(/\D+/g, '');
+
+    // Valida se o CPF tem o comprimento esperado (11 dígitos numéricos)
+
+    if (trimmedCPFValue.length != 11){
+        return "O CPF não contém o número correto de dígitos"
+    }
+
+    // Valida o CPF através do primeiro dígito verificador
+
+    var validation_first_digit = 0;
+    var offset = 10;
+    for(let i=0; i<9; i++){
+        validation_first_digit += trimmedCPFValue[i] * offset;
+        offset--;
+    }
+
+    validation_first_digit = (validation_first_digit*10)%11;
+
+    if (validation_first_digit != trimmedCPFValue[9]){
+        return "O CPF informado não é válido"
+    }
+
+    // Valida o CPF através do segundo dígito verificador
+
+    var validation_second_digit = 0;
+    var offset = 11;
+    for(let i=0; i<10; i++){
+        validation_second_digit += trimmedCPFValue[i] * offset;
+        offset--;
+    }
+
+    validation_second_digit = (validation_second_digit*10)%11;
+
+    if (validation_second_digit != trimmedCPFValue[10]){
+        return "O CPF informado não é válido"
+    }
+
+    // Valida o caso de um CPF com todos os dígitos iguais
+
+    var isValid = false;
+
+    for (let i=0; i<10; i++) {
+        if (trimmedCPFValue[i] != trimmedCPFValue[i + 1]){
+            isValid = true;
+            break;   
+        }
+    }
+
+    if (!isValid){
+        return "O CPF informado não é válido"
+    }
+
+    
+    if (trimmedCPFValue.length != 11) {
+        return "O CPF não contém o número correto de caracteres válidos"
+    } else {
+        return "OK"
+    }
+
+}
+
 function checkEmail() {
     var inputBox = document.getElementById("user_email");
     emailValid = validateEmail(inputBox);
@@ -133,6 +198,36 @@ function checkPassword() {
     } else {
         invalidPassword(passwordValid);
     }
+}
+
+function checkCPF() {
+    var inputBox = document.getElementById("user_cpf");
+
+    CPFValid = validateCPF(inputBox);
+
+    // DEBUG
+    console.log(CPFValid);
+
+    if (CPFValid === "OK") {
+        // validCPF();
+    } else {
+        // invalidCPF(CPFValid);
+    }
+}
+
+function cpfMask(i) {
+
+    var v = i.value;
+
+    if (isNaN(v[v.length - 1])) { // impede entrar outro caractere que não seja número
+        i.value = v.substring(0, v.length - 1);
+        return;
+    }
+
+    i.setAttribute("maxlength", "14");
+    if (v.length == 3 || v.length == 7) i.value += ".";
+    if (v.length == 11) i.value += "-";
+
 }
 
 window.onload = function () {
